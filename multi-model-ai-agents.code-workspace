@@ -5,11 +5,15 @@
     },
     {
       "path": "autogen"
+    },
+    {
+      "path": "crewai"
     }
   ],
   "settings": {
     "files.exclude": {
-      "autogen": true
+      "autogen": true,
+      "crewai": true
     }
   }
 }
