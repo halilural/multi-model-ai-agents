@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "autogen"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "autogen": true
+    }
+  }
+}
