@@ -1,0 +1,33 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+  default:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+handlers:
+  default:
+    class: logging.StreamHandler
+    formatter: default
+  file:
+    class: logging.FileHandler
+    formatter: default
+    filename: logs/uvicorn.log
+loggers:
+  uvicorn:
+    handlers: [default, file]
+    level: INFO
+    propagate: false
+  uvicorn.error:
+    handlers: [default, file]
+    level: INFO
+    propagate: false
+  uvicorn.access:
+    handlers: [default, file]
+    level: INFO
+    propagate: false
+  watchfiles:
+    handlers: [default, file]
+    level: WARNING
+    propagate: false
+root:
+  handlers: [default, file]
+  level: INFO
