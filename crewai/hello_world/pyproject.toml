@@ -1,0 +1,23 @@
+[project]
+name = "hello_world"
+version = "0.1.0"
+description = "hello-world using crewAI"
+authors = [{ name = "halil ural", email = "halilural5@gmail.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.95.0,<1.0.0"
+]
+
+[project.scripts]
+hello_world = "hello_world.main:run"
+run_crew = "hello_world.main:run"
+train = "hello_world.main:train"
+replay = "hello_world.main:replay"
+test = "hello_world.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

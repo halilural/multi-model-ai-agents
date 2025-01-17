@@ -1,0 +1,23 @@
+[project]
+name = "url_insight_api"
+version = "0.1.0"
+description = "url-insight-bot using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.95.0,<1.0.0"
+]
+
+[project.scripts]
+url_insight_api = "url_insight_api.main:run"
+run_crew = "url_insight_api.main:run"
+train = "url_insight_api.main:train"
+replay = "url_insight_api.main:replay"
+test = "url_insight_api.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
