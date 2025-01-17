@@ -59,13 +59,57 @@ Let's create wonders together with the power and simplicity of crewAI.
 
 ## Development
 
+### Setting Up Python (On Windows)
+
+To create a virtual environment and install the dependencies listed in a requirements.txt file, you can follow these steps:
+
+1. Create the virtual environment:
+   
+  ```bash
+  python -m venv venv
+  ```
+
+2. Activate the virtual environment:
+
+    ```bash
+  .\venv\Scripts\activate
+  ```
+
+3. Install the dependencies:
+
+  ```bash
+  python -m pip install -r requirements.txt
+  ```
+
+### Setting Up Python (On macOS/Linux)
+
+To create a virtual environment and install the dependencies listed in a requirements.txt file, you can follow these steps:
+
+1. Create the virtual environment:
+
+  ```bash
+  python3 -m venv venv
+  ```
+
+2. Activate the virtual environment:
+
+  ```bash
+  source venv/bin/activate
+  ```
+
+3. Install the dependencies:
+
+  ```bash
+  pip install -r requirements.txt
+  ```
+
 ### Starting the Server
 
 To start the server, navigate to your project directory and run the following command:
 
 ```bash
 cd ./crewai/url_insight_api
-uvicorn src.api.url_analyzer:app --reload --port 8000
+uvicorn src.url_insight_api.url_analyzer:app --reload --reload-include *.py --port 8000 --log-config config/log_config.yaml
 ```
 
 This will start the server with live reloading enabled on port 8000.

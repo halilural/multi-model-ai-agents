@@ -1,9 +1,13 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+import logging
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
+# Suppress logs from LiteLLM and httpx
+logging.getLogger("LiteLLM").setLevel(logging.WARNING)
 
 @CrewBase
 class UrlInsightBot():
@@ -21,14 +25,12 @@ class UrlInsightBot():
 	def researcher(self) -> Agent:
 		return Agent(
 			config=self.agents_config['researcher'],
-			verbose=True
 		)
 
 	@agent
 	def reporting_analyst(self) -> Agent:
 		return Agent(
 			config=self.agents_config['reporting_analyst'],
-			verbose=True
 		)
 
 	# To learn more about structured task outputs, 
@@ -44,7 +46,6 @@ class UrlInsightBot():
 	def reporting_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
 		)
 
 	@crew
@@ -57,6 +58,4 @@ class UrlInsightBot():
 			agents=self.agents, # Automatically created by the @agent decorator
 			tasks=self.tasks, # Automatically created by the @task decorator
 			process=Process.sequential,
-			verbose=True,
-			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
