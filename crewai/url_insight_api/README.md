@@ -55,3 +55,31 @@ For support, questions, or feedback regarding the UrlInsightBot Crew or crewAI.
 - [Chat with our docs](https://chatg.pt/DWjSBZn)
 
 Let's create wonders together with the power and simplicity of crewAI.
+
+
+## Development
+
+### Starting the Server
+
+To start the server, navigate to your project directory and run the following command:
+
+```bash
+cd ./crewai/url_insight_api
+uvicorn src.api.url_analyzer:app --reload --port 8000
+```
+
+This will start the server with live reloading enabled on port 8000.
+
+### Test the server
+
+Using curl 
+
+```bash
+# Start analysis
+curl -X POST http://localhost:8000/api/analyze \
+  -H "Content-Type: application/json" \
+  -d '{"topic": "AI LLMs"}'
+
+# Check task status (replace <task_id> with actual ID from previous response)
+curl http://localhost:8000/api/task/<task_id>
+```
