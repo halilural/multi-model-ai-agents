@@ -109,7 +109,7 @@ To start the server, navigate to your project directory and run the following co
 
 ```bash
 cd ./crewai/url_insight_api
-uvicorn src.url_insight_api.url_analyzer:app --reload --reload-include *.py --port 8000 --log-config config/log_config.yaml
+uvicorn app.main:app --reload --port 8000 --log-config config/log_config.yaml
 ```
 
 This will start the server with live reloading enabled on port 8000.
@@ -120,10 +120,10 @@ Using curl
 
 ```bash
 # Start analysis
-curl -X POST http://localhost:8000/api/analyze \
+curl -X POST http://localhost:8000/api/v1/analyze \
   -H "Content-Type: application/json" \
   -d '{"topic": "AI LLMs"}'
 
 # Check task status (replace <task_id> with actual ID from previous response)
-curl http://localhost:8000/api/task/<task_id>
+curl http://localhost:8000/api/v1/task/<task_id>
 ```

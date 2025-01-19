@@ -1,16 +1,16 @@
-from fastapi import FastAPI, HTTPException, BackgroundTasks
-from .models import TopicRequest, TaskResponse
-from .services import BotService
+from fastapi import APIRouter, HTTPException, BackgroundTasks
+from app.models.models import TopicRequest, TaskResponse
+from app.services.services import BotService
 
-app = FastAPI(title="URL Insight Bot API")
+router = APIRouter()
 
-@app.post("/api/analyze", response_model=TaskResponse)
+@router.post("/analyze", response_model=TaskResponse)
 async def analyze_topic(request: TopicRequest, background_tasks: BackgroundTasks):
     task_id = BotService.create_task(request.topic)
     background_tasks.add_task(BotService.process_task, task_id, request.topic)
     return BotService.get_task_status(task_id)
 
-@app.get("/api/task/{task_id}", response_model=TaskResponse)
+@router.get("/task/{task_id}", response_model=TaskResponse)
 async def get_task_status(task_id: str):
     task = BotService.get_task_status(task_id)
     if not task:

@@ -2,8 +2,8 @@ import asyncio
 import uuid
 import logging
 from typing import Dict
-from .models import TaskStatus, TaskResponse
-from .crew import UrlInsightBot
+from ..models.models import TaskStatus, TaskResponse
+from ..crew.crew import UrlInsightBot
 
 # Configure logging
 logging.basicConfig(
